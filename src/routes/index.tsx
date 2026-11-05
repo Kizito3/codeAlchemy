@@ -7,11 +7,16 @@ import InsightsSection from '#/components/home/insights'
 import ServicesSection from '#/components/home/service'
 import StandardsSection from '#/components/home/standards'
 import WorkSection from '#/components/home/works'
+import { getLatestPosts } from '#/functions/posts'
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute("/")({
+  loader: () => getLatestPosts(),
+  component: Home,
+});
 
 function Home() {
+  const latestPosts = Route.useLoaderData();
   return (
     <div className="">
       <HeroSection />
@@ -20,7 +25,7 @@ function Home() {
       <WorkSection />
       <ProcessSection />
       <StandardsSection />
-      <InsightsSection />
+      <InsightsSection posts={latestPosts} />
       <FaqSection />
       <ContactSection />
     </div>
