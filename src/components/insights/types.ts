@@ -5,3 +5,5 @@ export type RelatedPost = Pick<
   Post,
   "id" | "slug" | "title" | "excerpt" | "category" | "coverImage" | "readTime"
 >;
+
+export type ListPost = RelatedPost & { createdAt: Date | string };

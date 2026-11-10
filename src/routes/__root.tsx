@@ -1,4 +1,4 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
+import { HeadContent, Scripts, createRootRoute, useRouterState } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
@@ -33,17 +33,19 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAppRoute = pathname.startsWith("/dashboard") || pathname === "/login";
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <Navbar />
+         {!isAppRoute && <Navbar />}
         <ReactLenis root options={{ lerp: 0.1 }}>
           {children}
         </ReactLenis>
-        <Footer />
+         {!isAppRoute && <Footer />}
         <TanStackDevtools
           config={{
             position: "bottom-right",

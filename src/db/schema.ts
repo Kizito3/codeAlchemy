@@ -1,5 +1,5 @@
 import {
-  boolean, integer, pgTable, serial, text, timestamp,
+  boolean, integer, pgTable, serial, text, timestamp,jsonb
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
@@ -25,14 +25,35 @@ sectionLabel: text("section_label"),
 
 export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   category: text("category").notNull(),
   description: text("description"),
-  challenge: text("challenge"),
-  solution: text("solution"),
-  image: text("image"),
-  url: text("url"),
+  image: text("image"), // desktop preview
+  mobileImage: text("mobile_image"),
+  url: text("url"), // live site, optional
+  bgColor: text("bg_color").notNull().default("#D8DDD0"),
+  featured: boolean("featured").notNull().default(false), // spans the full row on desktop
+  published: boolean("published").notNull().default(false),
   sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+    // case study
+  caseStudyPublished: boolean("case_study_published").notNull().default(false),
+  summary: text("summary"),
+  client: text("client"),
+  year: integer("year"),
+  servicesProvided: text("services_provided").array().notNull().default([]),
+  coverImage: text("cover_image"),
+  results: jsonb("results")
+    .$type<{ value: string; label: string }[]>()
+    .notNull()
+    .default([]),
+  content: text("content"),
+  gallery: text("gallery").array().notNull().default([]),
+  metaTitle: text("meta_title"),
+  metaDescription: text("meta_description"),
+  ogImage: text("og_image"),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
 export const services = pgTable("services", {

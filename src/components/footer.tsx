@@ -3,7 +3,7 @@ import { ArrowUp, ArrowUpRight } from "lucide-react";
 
 const explore = [
   { label: "Studio", to: "/about" },
-  { label: "Services", to: "/", hash: "services" },
+  { label: "Solutions", to: "/solutions" },
   { label: "Selected work", to: "/work" },
   { label: "Insights", to: "/insights" },
 ] as const;
@@ -41,7 +41,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <Link
                     to={item.to}
-                    hash={"hash" in item ? item.hash : undefined}
+
                     className="transition-opacity hover:opacity-60"
                   >
                     {item.label}

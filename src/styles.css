@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
-
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
@@ -21,6 +21,15 @@ body,
 #app {
   min-height: 100%;
   font-family: 'MyFont', sans-serif;
+}
+
+@keyframes nav-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
 }
 
 body {

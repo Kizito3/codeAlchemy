@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
+import type { Faq } from "#/content/about";
 
-const faqs = [
+const defaultFaqs = [
   {
     question: "Who do you work best with?",
     answer:
@@ -35,7 +36,7 @@ const faqs = [
   },
 ] as const;
 
-export default function FaqSection() {
+export default function FaqSection({ faqs = defaultFaqs }: { faqs?: readonly Faq[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

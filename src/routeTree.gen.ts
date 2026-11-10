@@ -11,9 +11,23 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as WorkRouteImport } from './routes/work'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights/index'
 import { Route as InsightsSlugRouteImport } from './routes/insights/$slug'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions/index'
+import { Route as SolutionsSlugRouteImport } from './routes/solutions/$slug'
+import { Route as WorkIndexRouteImport } from './routes/work/index'
+import { Route as WorkSlugRouteImport } from './routes/work/$slug'
+import { Route as DashboardPostsIndexRouteImport } from './routes/dashboard/posts/index'
+import { Route as DashboardPostsIdRouteImport } from './routes/dashboard/posts/$id'
+import { Route as DashboardPostsNewRouteImport } from './routes/dashboard/posts/new'
+import { Route as DashboardProjectsIndexRouteImport } from './routes/dashboard/projects/index'
+import { Route as DashboardProjectsIdRouteImport } from './routes/dashboard/projects/$id'
+import { Route as DashboardProjectsNewRouteImport } from './routes/dashboard/projects/new'
+import { Route as DashboardProjectsCaseStudyIdRouteImport } from './routes/dashboard/projects/case-study/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,10 +39,25 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WorkRoute = WorkRouteImport.update({
-  id: '/work',
-  path: '/work',
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/insights/',
@@ -40,43 +69,203 @@ const InsightsSlugRoute = InsightsSlugRouteImport.update({
   path: '/insights/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/solutions/',
+  path: '/solutions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
+  id: '/solutions/$slug',
+  path: '/solutions/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/work/',
+  path: '/work/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardPostsIndexRoute = DashboardPostsIndexRouteImport.update({
+  id: '/posts/',
+  path: '/posts/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardPostsIdRoute = DashboardPostsIdRouteImport.update({
+  id: '/posts/$id',
+  path: '/posts/$id',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardPostsNewRoute = DashboardPostsNewRouteImport.update({
+  id: '/posts/new',
+  path: '/posts/new',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProjectsIndexRoute = DashboardProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProjectsIdRoute = DashboardProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProjectsNewRoute = DashboardProjectsNewRouteImport.update({
+  id: '/projects/new',
+  path: '/projects/new',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProjectsCaseStudyIdRoute =
+  DashboardProjectsCaseStudyIdRouteImport.update({
+    id: '/projects/case-study/$id',
+    path: '/projects/case-study/$id',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/login': typeof LoginRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/insights/': typeof InsightsIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
+  '/work/': typeof WorkIndexRoute
+  '/dashboard/posts/$id': typeof DashboardPostsIdRoute
+  '/dashboard/posts/new': typeof DashboardPostsNewRoute
+  '/dashboard/projects/$id': typeof DashboardProjectsIdRoute
+  '/dashboard/projects/new': typeof DashboardProjectsNewRoute
+  '/dashboard/posts/': typeof DashboardPostsIndexRoute
+  '/dashboard/projects/': typeof DashboardProjectsIndexRoute
+  '/dashboard/projects/case-study/$id': typeof DashboardProjectsCaseStudyIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/login': typeof LoginRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/insights': typeof InsightsIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
+  '/work': typeof WorkIndexRoute
+  '/dashboard/posts/$id': typeof DashboardPostsIdRoute
+  '/dashboard/posts/new': typeof DashboardPostsNewRoute
+  '/dashboard/projects/$id': typeof DashboardProjectsIdRoute
+  '/dashboard/projects/new': typeof DashboardProjectsNewRoute
+  '/dashboard/posts': typeof DashboardPostsIndexRoute
+  '/dashboard/projects': typeof DashboardProjectsIndexRoute
+  '/dashboard/projects/case-study/$id': typeof DashboardProjectsCaseStudyIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/login': typeof LoginRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/solutions/$slug': typeof SolutionsSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/insights/': typeof InsightsIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
+  '/work/': typeof WorkIndexRoute
+  '/dashboard/posts/$id': typeof DashboardPostsIdRoute
+  '/dashboard/posts/new': typeof DashboardPostsNewRoute
+  '/dashboard/projects/$id': typeof DashboardProjectsIdRoute
+  '/dashboard/projects/new': typeof DashboardProjectsNewRoute
+  '/dashboard/posts/': typeof DashboardPostsIndexRoute
+  '/dashboard/projects/': typeof DashboardProjectsIndexRoute
+  '/dashboard/projects/case-study/$id': typeof DashboardProjectsCaseStudyIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/work' | '/insights/$slug' | '/insights/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/about'
+    | '/login'
+    | '/sitemap.xml'
+    | '/insights/$slug'
+    | '/solutions/$slug'
+    | '/work/$slug'
+    | '/dashboard/'
+    | '/insights/'
+    | '/solutions/'
+    | '/work/'
+    | '/dashboard/posts/$id'
+    | '/dashboard/posts/new'
+    | '/dashboard/projects/$id'
+    | '/dashboard/projects/new'
+    | '/dashboard/posts/'
+    | '/dashboard/projects/'
+    | '/dashboard/projects/case-study/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/work' | '/insights/$slug' | '/insights'
-  id: '__root__' | '/' | '/about' | '/work' | '/insights/$slug' | '/insights/'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/sitemap.xml'
+    | '/insights/$slug'
+    | '/solutions/$slug'
+    | '/work/$slug'
+    | '/dashboard'
+    | '/insights'
+    | '/solutions'
+    | '/work'
+    | '/dashboard/posts/$id'
+    | '/dashboard/posts/new'
+    | '/dashboard/projects/$id'
+    | '/dashboard/projects/new'
+    | '/dashboard/posts'
+    | '/dashboard/projects'
+    | '/dashboard/projects/case-study/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/about'
+    | '/login'
+    | '/sitemap.xml'
+    | '/insights/$slug'
+    | '/solutions/$slug'
+    | '/work/$slug'
+    | '/dashboard/'
+    | '/insights/'
+    | '/solutions/'
+    | '/work/'
+    | '/dashboard/posts/$id'
+    | '/dashboard/posts/new'
+    | '/dashboard/projects/$id'
+    | '/dashboard/projects/new'
+    | '/dashboard/posts/'
+    | '/dashboard/projects/'
+    | '/dashboard/projects/case-study/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
-  WorkRoute: typeof WorkRoute
+  LoginRoute: typeof LoginRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   InsightsSlugRoute: typeof InsightsSlugRoute
+  SolutionsSlugRoute: typeof SolutionsSlugRoute
+  WorkSlugRoute: typeof WorkSlugRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
+  WorkIndexRoute: typeof WorkIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,12 +284,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/work': {
-      id: '/work'
-      path: '/work'
-      fullPath: '/work'
-      preLoaderRoute: typeof WorkRouteImport
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/insights/': {
       id: '/insights/'
@@ -116,15 +326,124 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/solutions'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/$slug': {
+      id: '/solutions/$slug'
+      path: '/solutions/$slug'
+      fullPath: '/solutions/$slug'
+      preLoaderRoute: typeof SolutionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/': {
+      id: '/work/'
+      path: '/work'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/posts/': {
+      id: '/dashboard/posts/'
+      path: '/posts'
+      fullPath: '/dashboard/posts/'
+      preLoaderRoute: typeof DashboardPostsIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/posts/$id': {
+      id: '/dashboard/posts/$id'
+      path: '/posts/$id'
+      fullPath: '/dashboard/posts/$id'
+      preLoaderRoute: typeof DashboardPostsIdRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/posts/new': {
+      id: '/dashboard/posts/new'
+      path: '/posts/new'
+      fullPath: '/dashboard/posts/new'
+      preLoaderRoute: typeof DashboardPostsNewRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/projects/': {
+      id: '/dashboard/projects/'
+      path: '/projects'
+      fullPath: '/dashboard/projects/'
+      preLoaderRoute: typeof DashboardProjectsIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/projects/$id': {
+      id: '/dashboard/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/dashboard/projects/$id'
+      preLoaderRoute: typeof DashboardProjectsIdRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/projects/new': {
+      id: '/dashboard/projects/new'
+      path: '/projects/new'
+      fullPath: '/dashboard/projects/new'
+      preLoaderRoute: typeof DashboardProjectsNewRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/projects/case-study/$id': {
+      id: '/dashboard/projects/case-study/$id'
+      path: '/projects/case-study/$id'
+      fullPath: '/dashboard/projects/case-study/$id'
+      preLoaderRoute: typeof DashboardProjectsCaseStudyIdRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
   }
 }
 
+interface DashboardRouteRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardPostsIdRoute: typeof DashboardPostsIdRoute
+  DashboardPostsNewRoute: typeof DashboardPostsNewRoute
+  DashboardProjectsIdRoute: typeof DashboardProjectsIdRoute
+  DashboardProjectsNewRoute: typeof DashboardProjectsNewRoute
+  DashboardPostsIndexRoute: typeof DashboardPostsIndexRoute
+  DashboardProjectsIndexRoute: typeof DashboardProjectsIndexRoute
+  DashboardProjectsCaseStudyIdRoute: typeof DashboardProjectsCaseStudyIdRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardPostsIdRoute: DashboardPostsIdRoute,
+  DashboardPostsNewRoute: DashboardPostsNewRoute,
+  DashboardProjectsIdRoute: DashboardProjectsIdRoute,
+  DashboardProjectsNewRoute: DashboardProjectsNewRoute,
+  DashboardPostsIndexRoute: DashboardPostsIndexRoute,
+  DashboardProjectsIndexRoute: DashboardProjectsIndexRoute,
+  DashboardProjectsCaseStudyIdRoute: DashboardProjectsCaseStudyIdRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
   AboutRoute: AboutRoute,
-  WorkRoute: WorkRoute,
+  LoginRoute: LoginRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   InsightsSlugRoute: InsightsSlugRoute,
+  SolutionsSlugRoute: SolutionsSlugRoute,
+  WorkSlugRoute: WorkSlugRoute,
   InsightsIndexRoute: InsightsIndexRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
+  WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
