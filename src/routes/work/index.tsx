@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getCaseStudyList } from "@/functions/projects";
+import { getPublishedProjects } from "@/functions/projects";
 import { seoHead } from "@/lib/seo";
-import CaseStudyCard from "#/components/work/casestudy-card";
+import WorkCard from "#/components/work/work-card";
 
 export const Route = createFileRoute("/work/")({
-  loader: () => getCaseStudyList(),
+  loader: () => getPublishedProjects(),
   head: () =>
     seoHead({
-      title: "Selected work | codeAlchemy",
+      title: "Selected work & case studies | codeAlchemy",
       description:
-        "Case studies from codeAlchemy: thoughtfully designed, carefully built websites across architecture, wellness and hospitality.",
+        "Selected projects and case studies from codeAlchemy: thoughtfully designed, carefully built websites across architecture, wellness and hospitality.",
       path: "/work",
     }),
   component: WorkPage,
@@ -33,12 +33,12 @@ function WorkPage() {
         </p>
 
         {projects.length === 0 ? (
-          <p className="mt-12 font-montserrat text-sm text-[#647466]">Case studies are coming soon.</p>
+          <p className="mt-12 font-montserrat text-sm text-[#647466]">Projects are coming soon.</p>
         ) : (
-          <ul className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
+          <ul className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-3">
             {projects.map((project) => (
               <li key={project.id}>
-                <CaseStudyCard project={project} />
+                <WorkCard project={project} />
               </li>
             ))}
           </ul>

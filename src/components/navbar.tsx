@@ -8,6 +8,7 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/work", label: "Works" },
   { to: "/insights", label: "Insights" },
+  { to: "/contact", label: "Contact" }
 ] as const;
 
 export default function Navbar() {
@@ -59,7 +60,7 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <Link to="/about" className="cursor-pointer">
+            <Link to="/contact" className="cursor-pointer">
               <Button
                 variant="app"
                 className="h-13 cursor-pointer px-5.75 font-montserrat"
@@ -130,7 +131,7 @@ export default function Navbar() {
 
         {/* CTA pinned to the bottom */}
         <div className="shrink-0 px-6 pb-8 pt-4">
-          <Link to="/about" onClick={() => setOpen(false)}>
+          <Link to="/contact" onClick={() => setOpen(false)}>
             <Button
               variant="app"
               className="h-13 w-full cursor-pointer px-5.75 font-montserrat"

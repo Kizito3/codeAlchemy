@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import Hero from "../../../public/images/hero.svg";
+import { Link } from "@tanstack/react-router";
 
 export default function HeroSection() {
   return (
@@ -16,7 +17,7 @@ export default function HeroSection() {
 
         <div className="mt-8 mb-7 flex flex-col gap-6 lg:my-8 lg:flex-row lg:items-center lg:justify-between lg:gap-2">
           <div className="lg:w-223">
-            <h1 className="text-[56px] leading-[57px] text-[#123D2B] lg:text-[91px] lg:leading-25">
+            <h1 className="text-[56px] leading-14.25 text-[#123D2B] lg:text-[91px] lg:leading-25">
               <span className="lg:block">A little alchemy.</span>{" "}
               <span className="lg:block">A lasting impression.</span>
             </h1>
@@ -26,6 +27,7 @@ export default function HeroSection() {
               We turn ambitious ideas into distinctive digital experiences.
               Beautifully designed. Thoughtfully built. Ready to grow.
             </p>
+            <Link to="/work" >
             <Button
               variant="app"
               className="h-13 cursor-pointer px-5.75 font-montserrat mt-6.5 lg:mt-5.5"
@@ -34,7 +36,7 @@ export default function HeroSection() {
               <div>
                 <ArrowUpRight className="size-5 ml-5" />
               </div>
-            </Button>
+            </Button></Link>
           </div>
         </div>
 

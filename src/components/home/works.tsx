@@ -118,7 +118,7 @@ export default function WorkSection({ projects }: { projects: WorkProject[] }) {
         {/* CTA */}
         <div className="mt-8.5 flex justify-center lg:mt-12.5">
           <Link
-            to="/about"
+            to="/contact"
             className="flex h-13 w-full items-center justify-between rounded-[3px] border border-[#CCD7C6] pl-5.75 pr-6 font-montserrat text-[13px] text-[#19382B] transition-colors hover:bg-[#F5F7EF] lg:w-auto lg:gap-8"
           >
             Have something in mind? Let’s make it.

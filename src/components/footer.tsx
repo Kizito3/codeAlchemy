@@ -9,14 +9,14 @@ const explore = [
 ] as const;
 
 const socials = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Behance", href: "https://behance.net" },
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Behance", href: "#" },
 ] as const;
 
 export default function Footer() {
   return (
-    <footer className="bg-[#E9F0E3] pb-8 pt-16 lg:pb-8 lg:pt-17.5">
+    <footer className="bg-[#E9F0E3] pb-8 pt-16 lg:pb-8 lg:pt-17.5 mt-10">
       <div className="mx-auto max-w-360 px-6 lg:px-20">
         {/* Top */}
         <div className="grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-[553fr_244fr_244fr_239fr] lg:gap-x-0">
@@ -86,7 +86,7 @@ export default function Footer() {
                 hello@codealchemy.studio
               </a>
               <Link
-                to="/about"
+                to="/contact"
                 className="inline-flex items-center gap-1.5 border-b border-[#197044] pb-0.5 text-[#197044] transition-opacity hover:opacity-70"
               >
                 Start a project

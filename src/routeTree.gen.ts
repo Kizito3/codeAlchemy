@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights/index'
 import { Route as InsightsSlugRouteImport } from './routes/insights/$slug'
@@ -52,6 +53,11 @@ const LoginRoute = LoginRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/insights/$slug': typeof InsightsSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/contact/': typeof ContactIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/insights/$slug': typeof InsightsSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/contact': typeof ContactIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/solutions': typeof SolutionsIndexRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/insights/$slug': typeof InsightsSlugRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/contact/': typeof ContactIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
@@ -200,6 +209,7 @@ export interface FileRouteTypes {
     | '/insights/$slug'
     | '/solutions/$slug'
     | '/work/$slug'
+    | '/contact/'
     | '/dashboard/'
     | '/insights/'
     | '/solutions/'
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
     | '/insights/$slug'
     | '/solutions/$slug'
     | '/work/$slug'
+    | '/contact'
     | '/dashboard'
     | '/insights'
     | '/solutions'
@@ -241,6 +252,7 @@ export interface FileRouteTypes {
     | '/insights/$slug'
     | '/solutions/$slug'
     | '/work/$slug'
+    | '/contact/'
     | '/dashboard/'
     | '/insights/'
     | '/solutions/'
@@ -263,6 +275,7 @@ export interface RootRouteChildren {
   InsightsSlugRoute: typeof InsightsSlugRoute
   SolutionsSlugRoute: typeof SolutionsSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  ContactIndexRoute: typeof ContactIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
@@ -303,6 +316,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -441,6 +461,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsSlugRoute: InsightsSlugRoute,
   SolutionsSlugRoute: SolutionsSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
+  ContactIndexRoute: ContactIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
   WorkIndexRoute: WorkIndexRoute,

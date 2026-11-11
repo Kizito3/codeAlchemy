@@ -3,7 +3,6 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { getCurrentUserFn } from "@/functions/auth";
 import DashboardSidebar from "#/components/dashboard/dashboard-sidebar";
-import NavigationProgress from "#/components/dashboard/navigation-progress-bar";
 // import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 
 export const Route = createFileRoute("/dashboard")({
@@ -16,6 +15,11 @@ export const Route = createFileRoute("/dashboard")({
     meta: [
       { title: "Dashboard | codeAlchemy" },
       { name: "robots", content: "noindex, nofollow" },
+    ],
+    links: [
+      { rel: "icon", href: "/favicon.png", sizes: "48x48" },
+      { rel: "icon", href: "/favicon.png", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/images/Brand.svg" },
     ],
   }),
   component: DashboardLayout,
@@ -35,7 +39,7 @@ function DashboardLayout() {
 
   return (
     <div className="min-h-dvh bg-[#F5F7EF] lg:pl-65">
-        <NavigationProgress />
+        {/* <NavigationProgress /> */}
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-65 lg:block">
         <DashboardSidebar email={user.email} />

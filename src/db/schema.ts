@@ -63,3 +63,16 @@ export const services = pgTable("services", {
   tags: text("tags").array().notNull().default([]),
   sortOrder: integer("sort_order").notNull().default(0),
 });
+
+export const inquiries = pgTable("inquiries", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  company: text("company"),
+  services: text("services").array().notNull().default([]),
+  budget: text("budget"),
+  timeline: text("timeline"),
+  message: text("message").notNull(),
+  emailSent: boolean("email_sent").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});

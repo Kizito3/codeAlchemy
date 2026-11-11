@@ -1,4 +1,5 @@
 export const SITE_NAME = "codeAlchemy";
+const DEFAULT_OG_IMAGE = "/images/blog1.svg";
 export const SITE_URL = String(
   import.meta.env.VITE_SITE_URL ?? "https://codealchemy.studio",
 ).replace(/\/$/, "");
@@ -20,6 +21,7 @@ type SeoInput = {
   image?: string | null;
   type?: "website" | "article";
   jsonLd?: object;
+  extraMeta?: { property: string; content: string }[];
 };
 
 export function seoHead({
@@ -29,9 +31,10 @@ export function seoHead({
   image,
   type = "website",
   jsonLd,
+  extraMeta = [],
 }: SeoInput) {
   const url = `${SITE_URL}${path}`;
-  const img = image ? absoluteUrl(image) : null;
+  const img = absoluteUrl(image || DEFAULT_OG_IMAGE);
 
   return {
     meta: [
@@ -42,15 +45,12 @@ export function seoHead({
       { property: "og:url", content: url },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { name: "twitter:card", content: img ? "summary_large_image" : "summary" },
+      { property: "og:image", content: img },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      ...(img
-        ? [
-            { property: "og:image", content: img },
-            { name: "twitter:image", content: img },
-          ]
-        : []),
+      { name: "twitter:image", content: img },
+      ...extraMeta,
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: jsonLd
@@ -318,6 +318,104 @@ export function insightsJsonLd(p: {
           url: `${SITE_URL}/insights/${post.slug}`,
           name: post.title,
         })),
+      },
+    ],
+  };
+}
+
+export function articleJsonLd(p: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string | null;
+  datePublished: string;
+  dateModified: string;
+  section: string;
+  wordCount: number;
+}) {
+  const url = `${SITE_URL}${p.path}`;
+  const publisher = {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: absoluteUrl("/logo.png") },
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: p.title.slice(0, 110),
+        description: p.description,
+        url,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        image: [absoluteUrl(p.image || DEFAULT_OG_IMAGE)],
+        datePublished: p.datePublished,
+        dateModified: p.dateModified,
+        articleSection: p.section,
+        wordCount: p.wordCount,
+        inLanguage: "en",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+        publisher,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Insights", item: `${SITE_URL}/insights` },
+          { "@type": "ListItem", position: 3, name: p.title, item: url },
+        ],
+      },
+    ],
+  };
+}
+
+export function contactJsonLd(p: {
+  title: string;
+  description: string;
+  path: string;
+  email: string;
+}) {
+  const url = `${SITE_URL}${p.path}`;
+  const orgId = `${SITE_URL}/#organization`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: p.title,
+        description: p.description,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": orgId },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Contact", item: url },
+        ],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": orgId,
+        name: SITE_NAME,
+        url: SITE_URL,
+        email: p.email,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: p.email,
+          availableLanguage: "English",
+        },
       },
     ],
   };

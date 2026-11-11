@@ -1,5 +1,4 @@
 import AboutSection from "#/components/home/about";
-import ContactSection from "#/components/home/contact";
 import FaqSection from "#/components/home/faq";
 import HeroSection from "#/components/home/hero-section";
 import ProcessSection from "#/components/home/how-we-work";
@@ -66,7 +65,7 @@ function Home() {
       <StandardsSection />
       <InsightsSection posts={latestPosts} />
       <FaqSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
     </>
   );
 }

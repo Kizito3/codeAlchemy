@@ -35,10 +35,12 @@ export const getPublishedProjects = createServerFn({ method: "GET" }).handler(()
       category: projects.category,
       image: projects.image,
       mobileImage: projects.mobileImage,
+      coverImage: projects.coverImage,
+      summary: projects.summary,
       url: projects.url,
-       caseStudyPublished: projects.caseStudyPublished,
       bgColor: projects.bgColor,
       featured: projects.featured,
+      caseStudyPublished: projects.caseStudyPublished,
     })
     .from(projects)
     .where(eq(projects.published, true))
