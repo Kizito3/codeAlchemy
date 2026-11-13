@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { ORG } from "#/content/about";
+// import { ORG } from "#/content/about";
 
 export default function AboutCta() {
   return (
@@ -14,19 +14,18 @@ export default function AboutCta() {
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
           <Link
-            to="/"
-            hash="contact"
+            to="/contact"
             className="inline-flex h-13 items-center gap-8 rounded-[3px] bg-[#D5E6B8] pl-5.75 pr-6 font-montserrat text-[13px] text-[#0A2B20] transition-colors hover:bg-[#E2EFCB]"
           >
             Start a project
             <ArrowUpRight className="size-4" strokeWidth={1.5} />
           </Link>
-          <a
+          {/* <a
             href={`mailto:${ORG.email}`}
             className="border-b border-[#D5E6B8] pb-0.5 font-montserrat text-sm text-[#D5E6B8] transition-opacity hover:opacity-70"
           >
             {ORG.email}
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

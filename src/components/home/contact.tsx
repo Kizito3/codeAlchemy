@@ -13,10 +13,10 @@ const services = [
 
 // TODO: change these to ranges you actually quote (for example in naira)
 const budgets = [
-  "Under $2,000",
-  "$2,000 – $5,000",
-  "$5,000 – $10,000",
-  "$10,000+",
+  "Under ₦200,000",
+  "₦200,000 – ₦500,000",
+  "₦500,000 – ₦1,000,000",
+  "₦1,000,000+",
   "Not sure yet",
 ];
 
@@ -143,7 +143,7 @@ export default function ContactSection({
               there.
             </p>
 
-            <div className="mt-8 border-y border-[#25453A] py-6 lg:mt-10">
+            {/* <div className="mt-8 border-y border-[#25453A] py-6 lg:mt-10">
               <p className="font-montserrat text-[11px] uppercase text-[#B8C4BB]">
                 Prefer a good old-fashioned email?
               </p>
@@ -157,7 +157,7 @@ export default function ContactSection({
                   strokeWidth={1.5}
                 />
               </a>
-            </div>
+            </div> */}
 
             <div className="mt-8">
               <p className="font-montserrat text-xs uppercase tracking-[0.5px] text-[#F5F7EF]">

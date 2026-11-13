@@ -45,9 +45,9 @@ export default function AboutSection() {
         <div className="mt-10 grid gap-10 lg:mt-12 lg:grid-cols-[45fr_32fr] lg:gap-12">
           <div className="overflow-hidden">
             <img
-              src="/images/studio.svg"
+              src="/images/coding.jpg"
               alt="The codeAlchemy studio workspace"
-              className="aspect-4/3 w-full object-cover lg:aspect-72/31"
+              className="aspect-4/3 w-full object-cover lg:aspect-72/41"
             />
           </div>
 

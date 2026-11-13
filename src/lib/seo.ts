@@ -1,7 +1,7 @@
 export const SITE_NAME = "codeAlchemy";
 const DEFAULT_OG_IMAGE = "/images/blog1.svg";
 export const SITE_URL = String(
-  import.meta.env.VITE_SITE_URL ?? "https://codealchemy.studio",
+  import.meta.env.VITE_SITE_URL ?? "https://thecodealchemy.com.ng",
 ).replace(/\/$/, "");
 
 export function absoluteUrl(value: string) {

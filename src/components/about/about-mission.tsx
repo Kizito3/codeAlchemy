@@ -11,7 +11,7 @@ export default function AboutMission() {
             alt={MISSION.image.alt}
             loading="lazy"
             decoding="async"
-            className="aspect-4/3 w-full object-cover"
+            className="aspect-4/5 w-full object-cover"
           />
 
           <div>

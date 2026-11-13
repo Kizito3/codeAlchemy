@@ -3,4 +3,4 @@ Allow: /
 Disallow: /dashboard
 Disallow: /login
 
-Sitemap: https://code-alchemy-nu.vercel.app/sitemap.xml
+Sitemap: https://thecodealchemy.com.ng/sitemap.xml

@@ -10,7 +10,7 @@ import {
 
 export const ORG = {
   name: "codeAlchemy",
-  email: "hello@codealchemy.studio",
+  email: "chigokizzy@gmail.com",
   location: {
     locality: "Owerri",
     region: "Imo State", // TODO: confirm this is your base
@@ -52,7 +52,7 @@ export const MISSION = {
   vision:
     "A web where good design is the standard rather than the exception, and where businesses of every size can have a website that is considered, accessible and built to last.",
   image: {
-    src: "/images/studio.jpg", // TODO: use a real photo of your workspace or team
+    src: "/images/about.jpg", // TODO: use a real photo of your workspace or team
     alt: "A bright studio workspace with a wooden table, laptops and design books",
   },
 };
