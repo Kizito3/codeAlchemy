@@ -1,5 +1,6 @@
 import Markdown, { type Components } from "react-markdown";
 import { getText, slugify, type Heading } from "@/lib/article";
+import remarkGfm from "remark-gfm";
 
 function Takeaways({ raw }: { raw: string }) {
   const [title, ...rest] = raw
@@ -116,6 +117,35 @@ export default function ArticleMarkdown({
         {children}
       </ol>
     ),
+        // GFM tables: wrapper scrolls sideways on small screens
+    table: ({ children }) => (
+      <div className="my-10 overflow-x-auto border border-[#CFDAC8]">
+        <table className="w-full min-w-140 border-collapse text-left font-montserrat">
+          {children}
+        </table>
+      </div>
+    ),
+    thead: ({ children }) => <thead className="bg-[#E9F0E3]">{children}</thead>,
+    tbody: ({ children }) => <tbody>{children}</tbody>,
+    tr: ({ children }) => (
+      <tr className="border-t border-[#CFDAC8] first:border-t-0">{children}</tr>
+    ),
+    th: ({ children, style }) => (
+      <th
+        style={style}
+        className="px-4 py-3 text-[11px] font-normal uppercase tracking-[1px] text-[#197044] lg:px-5"
+      >
+        {children}
+      </th>
+    ),
+    td: ({ children, style }) => (
+      <td
+        style={style}
+        className="px-4 py-4 align-top text-[14px] leading-6 text-[#647466] first:font-medium first:text-[#19382B] lg:px-5 lg:text-[15px]"
+      >
+        {children}
+      </td>
+    ),
     strong: ({ children }) => (
       <strong className="font-medium text-[#19382B]">{children}</strong>
     ),
@@ -154,7 +184,7 @@ export default function ArticleMarkdown({
 
   return (
     <div className="[&>*:first-child]:mt-0">
-      <Markdown components={components}>{content}</Markdown>
+      <Markdown components={components} remarkPlugins={[remarkGfm]}>{content}</Markdown>
     </div>
   );
 }
