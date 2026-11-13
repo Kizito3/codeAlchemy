@@ -3,4 +3,4 @@ Allow: /
 Disallow: /dashboard
 Disallow: /login
 
-Sitemap: https://thecodealchemy.com.ng/sitemap.xml
+Sitemap: https://www.thecodealchemy.com.ng/sitemap.xml
