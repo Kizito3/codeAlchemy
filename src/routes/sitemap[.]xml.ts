@@ -15,7 +15,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const { posts, projects } = await getSitemapData();
 
         // remove any page you haven't built
-        const staticPages = ["/", "/about", "/work", "/insights", "/solutions"];
+        const staticPages = ["/", "/about", "/work", "/insights", "/solutions", "/contact"];
 
         const urls = [
           ...staticPages.map((path) => ({ loc: `${SITE_URL}${path}`, lastmod: null as string | null })),
