@@ -11,8 +11,14 @@ const day = (d: Date | string) => new Date(d).toISOString().slice(0, 10);
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
-        const { posts, projects } = await getSitemapData();
+     GET: async () => {
+  let posts, projects;
+  try {
+    ({ posts, projects } = await getSitemapData());
+  } catch (err) {
+    console.error("sitemap: getSitemapData failed", err);
+    return new Response("Sitemap data error", { status: 500 });
+  }
 
         // remove any page you haven't built
         const staticPages = ["/", "/about", "/work", "/insights", "/solutions", "/contact"];
