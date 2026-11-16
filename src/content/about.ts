@@ -32,13 +32,13 @@ export const ORG = {
 export const ABOUT_META = {
   title: "About codeAlchemy | Web Design Studio in Owerri, Nigeria",
   description:
-    "Meet codeAlchemy, an independent web design and development studio in Owerri, Imo State. Learn who we are, what we believe and how we build websites that work.",
-  updated: "2026-11-08", // update whenever you change this page's content
+    "Meet codeAlchemy, an independent web design and development studio in Owerri, Imo State, Nigeria. Learn who we are, what we believe and how we build websites that work.",
+  updated: "2026-11-08",
 };
 
 // The one-sentence answer to "what is codeAlchemy?"
 export const DEFINITION =
-  "codeAlchemy is an independent web design and development studio in Owerri, Imo State. We help founders and growing businesses across Nigeria and beyond turn ambitious ideas into fast, distinctive websites that are built to be found, trusted and maintained.";
+  "codeAlchemy is an independent web design and development studio in Owerri, Imo State, Nigeria. We help founders and growing businesses across Nigeria and beyond turn ambitious ideas into fast, distinctive websites that are built to be found, trusted and maintained.";
 
 export const INTRO = [
   "We’re a small, hands-on studio. The people you talk to at the start are the people who design, build and look after your website, so nothing gets lost in a hand-off.",
