@@ -68,7 +68,7 @@ export default function InsightsSection({ posts }: { posts: Post[] }) {
                   {post.title}
                 </h3>
 
-                <p className="mt-5 font-montserrat text-[15px] leading-5.75 text-[#647466]">
+                <p className="mt-5 font-montserrat text-[15px] leading-5.75 text-[#647466] line-clamp-2">
                   {post.excerpt}
                 </p>
 
